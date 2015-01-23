@@ -30,12 +30,45 @@ app.service('itunesService', function($http, $q){
 				tempData.CollectionPrice = result[i].collectionPrice;
 				tempData.Play = result[i].previewUrl;
 				tempData.Type = result[i].kind;
+				tempData.SongName = result[i].trackName;
 				tempArr.push(tempData);
 				// console.log(tempData.Artist);
 			}
-			// console.log(result);
+			console.log(result);
 			deferred.resolve(tempArr);
 		});
-		return deferred.promise;
+		return deferred.promise;  //this is returning the promise that I built.
 	};
+
+	// this.getArtist = function(artist, type) {
+	// 	var deferred = $q.defer();
+	// 	$http ({
+	// 		method: 'JSONP',
+	// 		url: 'https://itunes.apple.com/search?term=' + artist + '&media=' + type + '&callback=JSON_CALLBACK'
+	// 	}).then(function(info) {
+	// 		var data = info.data.results;
+	// 		var songArr = [];
+	// 		for(var i = 0; i < data.length; i++) {
+	// 			var songObj = {
+	// 				AlbumArt: data[i].artworkUrl100,
+	// 				Artist: data[i].artistName,
+	// 				Collection: data[i].collectionName,
+	// 				CollectionPrice: data[i].collectionPrice,
+	// 				Play: data[i].previewUrl,
+	// 				Type: data[i].kind,
+	// 				SongName: data[i].trackName,
+	// 			};
+	// 			songArr.push(songObj);
+	// 		}
+	// 		deferred.resolve(songArr);
+	// 	}, function(error) {
+	// 		deferred.reject(error);
+	// 	});
+	// 	return deferred.promise;
+	// };
+
+
+
+	
 });
+

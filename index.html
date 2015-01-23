@@ -1,12 +1,14 @@
 <!DOCTYPE HTML>
 <html ng-app="itunes">
   <head>
+    <title>iTunes Angular App</title>
+    <meta charset="utf-8">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
-  
+
   <body ng-controller="mainCtrl">
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
@@ -16,21 +18,29 @@
           </div>
           <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
-              <input type="text" class="form-control" ng-model="artist" placeholder="Artist Name" >
-              <button class="btn btn-primary" ng-click="getSongData()"> Submit </button>
+              <input type="text" class="form-control" ng-model="artist" placeholder="Artist Name" ng-change="getSongData()">
             </div>
           </form>
+          <label>
+            <select class="navbar-form form-control navbar-left">
+              <option value="movie" selected>Movie</option>
+              <option value="musicTrack">Music</option>
+              <option value="tvShow">TV Show</option>
+            </select>
+          </label>
         </div>
       </div>
     </div>
-    <div class="panel panel-default">
+    <div class="panel panel-default" ng-localStorage="storageOptions">
       <div class="panel-heading"> Your Search Results:</div>
       <div class="gridStyle" ng-grid="gridOptions" swap-image="defaultInfo.search"></div>
     </div>
 
+    
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid.min.js"></script>
+    <script src="js/gsklee-ngStorage-bea0498/ngStorage.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/mainCtrl.js"></script>
     <script src="js/itunesService.js"></script>
